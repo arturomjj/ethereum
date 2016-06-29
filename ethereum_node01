@@ -15,4 +15,71 @@ sudo apt-get install ethereum
   > personal.newAccount("comacoma")
   "0xac2130bc673ce0b760e3f65a9b1bb085e61f5498"
   3.3 Miningin process start.
-4.
+4.Using another command to check the ether balance "web3.fromWei(eth.getBalance(eth.coinbase),"ether")"
+
+Now generate your first contract
+https://www.ethereum.org/greeter
+(SNAPSHOT:AfterMining002)
+5. Install Solc, instructions https://github.com/ethereum/go-ethereum/wiki/Contract-Tutorial
+--------------------------------------------------
+sudo add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install solc
+which solc
+--------------------------------------------------
+
+
+FOLLOWING WITH THE RAPID LEARNING MANUAL
+- Creating new accounts
+artne0@artne0-ether:~$ geth --datadir /home/artne0/ether/test_chain/blockchain account list
+- Now testing to trsanfer between account.
+Following page 29, 2.1.4.2 Transfer
+* we first need to unlock the account
+--unlock "address" when you start the initial comand. 
+Example: artne0@artne0-ether:~/ether/test_chain/blockchain$ geth --genesis /home/artne0/ether/test_chain/gensis.json --datadir /home/artne0/ether/test_chain/blockchain --networkid 9876 --nodiscover --maxpeers 0 --solc "/usr/bin/solc" --unlock "0xac2130bc673ce0b760e3f65a9b1bb085e61f5498" console 2>> /home/artne0/ether/test_chain/blockchain/chaindata/my.log
+--------------------------------------------------
+Account #0: {0xac2130bc673ce0b760e3f65a9b1bb085e61f5498} 
+Account #1: {0x3ef06c414b2275f03d287314afd315d0849df1ec} 
+Account #2: {0x6de9b6e788bf35e998391f244293c2f46678e08f} 
+Account #3: {0xd60e855c41c749e4c2aaddf6bef4149a3beb4800} 
+--------------------------------------------------
+eth.sendTransaction({from: '0xac2130bc673ce0b760e3f65a9b1bb085e61f5498', to:
+'0xd60e855c41c749e4c2aaddf6bef4149a3beb4800', value: web3.toWei(10, "ether")})
+--------------------------------------------------
+After the execution, get the followin.
+Return: "0x3504056ff5bbc349189feba3b608fe3eee7089619c8045339f9ff56209d83eb8"
+Whit this the transaction are saved, but still not processed in the blockchain, in order to do this, we need to execute the mining
+process for a while we can track the progress throught the logs until the transaction pendings are zero.
+After this is possible to check the balance of the accounts again and the transaction will be exeucted.
+
+SOLC COMPILER from the RAPID LERNING MANUAL (pag 40)
+SNAPSHOT:AfterTransactions003
+> eth.getCompilers();
+["Solidity"]
+Compile the contract with the software installed locally
+Follow the instructions from the manual, the part in yello, just remove all the spaces and use the account that you want.
+Track the status of the mining process until you can see the contract mined. And then execute the contract.
+> Contract mined! Address: 0x09dca778bd2af8e351092d41dfa78f6825984cff
+This is going to be the permanent address of the contract.
+> greeter.greet();
+"Hello World!"
+
+- Is possible to set the contract with the avility to be executed by others, this is an easy step and is done throught the ABI interface.
+- Is also useful the call KILL todestroy the contract. (pag 48)
+
+Install ETH Graphical interface.
+
+SNAPSHOT:AfterGETHandContracts004
+
+Install MIX IDE
+http://www.ethdocs.org/en/latest/ethereum-clients/cpp-ethereum/installing-binaries/linux-ubuntu-ppa.html
+Instllation done following the indication in the link above.
+
+SOLIDITY language (pag 52)
+
+
+
+
+
+
+
