@@ -1,0 +1,18 @@
+This document explain the steps followed to create the machine, private ethereum network
+
+1. Install Linux with updates and tools. (SNAPSHOT:FreshInstall001)
+2. Install Geth from https://ethereum.org/cli
+--------------------------------------------------
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+--------------------------------------------------
+3. Follow the instructions from the manual http://eliasbagley.github.io/ethereum/2016/02/14/getting-started-with-ethereum.html
+  3.1 Create the network and start the console
+  $ geth --genesis /home/artne0/ether/test_chain/gensis.json --datadir /home/artne0/ether/test_chain/blockchain --networkid 9876 --nodiscover --maxpeers 0 console
+  3.2 Create account
+  > personal.newAccount("comacoma")
+  "0xac2130bc673ce0b760e3f65a9b1bb085e61f5498"
+  3.3 Miningin process start.
+4.
