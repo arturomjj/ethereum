@@ -2,7 +2,45 @@ In this fil I will detail all the step followed to install.
 
 1. Install Geth following the instructions in the official page.
 
+1.1 
+
+artne0@pcne0:~$ geth account new
+Your new account is locked with a password. Please give a password. Do not forget this password.
+Passphrase: comacoma
+Repeat passphrase: 
+Address: {1ea9fe286eab1f5011dba15077827237fcc5d9ec}
+
 2. Using the web https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster
 In order to create the installation of the private network.
+-------
+2.1 Creation of the first NODE
+
+artne0@pcne0:~$ geth --datadir="/tmp/eth/60/01" -verbosity 6 --ipcdisable --port 30301 --rpcport 8101 console 2>> /tmp/eth/60/01.log
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.4.6-stable/linux/go1.6.1
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> admin.nodeInfo.enode
+"enode://b0baa20e40bdc91bed6f07afa57ce6a5cc546f2bd0ee763f592cc2f7084a5e8845776e3b3b1a9604a3f34f697fcc6f5b533347d3e9acbb0faa4138b072622e86@[::]:30301"
+
+if config 10.0.2.15
+
+2.2 Creation of the second NODE
+
+artne0@pcne0:~$ geth --datadir="/tmp/eth/60/02" --verbosity 6 --ipcdisable --port 30302 --rpcport 8102 console 2>> /tmp/eth/60/02.log 
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.4.6-stable/linux/go1.6.1
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> admin.nodeInfo.enode
+"enode://76374118f2b6b729d3940179a80cbcfed140937f4496c4d396ff610f7cf54cb27fa0d4f814ba0b27b9080e38e5f0a99ad23771f0405f777b596966bca4afa8b1@[::]:30302"
+> {c2f7084a5e8845776e3b3b1a9604a3f34f697fcc6f5b533347d3e9acbb0faa4138b072622e86@10.0.2.15:30301");
+true
+> net.peerCount
+1
+
+Make sure to keep runnning the two nodes at same time.
 
 3. 
